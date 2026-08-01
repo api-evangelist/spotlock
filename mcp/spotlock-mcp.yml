@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://www.spotlock.co/llms.txt
+notes: >-
+  Site is built on Wix, which exposes a hosted Model Context Protocol (MCP)
+  endpoint for agentic access to public site content. This is the Wix Site MCP
+  (generic across Wix sites), not a bespoke Spotlock product API. The endpoint is
+  live: an unauthenticated JSON-RPC tools/list POST returns the tool set below;
+  a GET returns HTTP 401. No authentication is required to connect; only public
+  site information is exposed.
+server:
+  name: spotlock
+  provider: Wix Site MCP
+  transport: http
+  url: https://www.spotlock.co/_api/mcp
+  docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
+  auth: none
+tools:
+- name: GetBusinessDetails
+  description: Retrieves business and site details such as timezone, email, phone, and address.
+- name: SearchInSite
+  description: Searches the site for information.
+  parameters:
+  - name: searchTerm
+    description: The term to search for in the site.
+- name: SearchSiteApiDocs
+  description: >-
+    Retrieves the API documentation for the Wix business solutions installed on
+    this site, and informs the AI client how to use the APIs.
+  parameters:
+  - name: searchTerm
+    description: The term to search for in the site API documentation.
+- name: GenerateVisitorToken
+  description: >-
+    Creates a new visitor session and obtains a visitor access token for the site.
+    Must be called before making any CallWixSiteAPI request.
+- name: CallWixSiteAPI
+  description: >-
+    Calls API methods on the site to perform actions on a visitor's behalf, such
+    as querying site data, booking an appointment, or starting a purchase.
+  parameters:
+  - name: visitorToken
+    description: Visitor access token. Use GenerateVisitorToken first if not available.
+  - name: url
+    description: Absolute URL of the API method to call. Retrieve using SearchSiteApiDocs.
+  - name: method
+    description: HTTP method to use for the API call.
+  - name: body
+    description: Request body as a valid JSON string.
+- name: ReadFullDocsArticle
+  description: Fetches a complete article from the Wix developer documentation portal.
+  parameters:
+  - name: articleUrl
+    description: URL of an article in the Wix developer documentation portal.
+- name: ReadFullDocsMethodSchema
+  description: Fetches the full schema for a Wix API method.
+  parameters:
+  - name: articleUrl
+    description: URL of the reference article for the Wix API method.
+capabilities:
+- Get business details (contact info, location, hours)
+- Discover products and services on offer
+- Book services and make reservations
+- Start a purchase and be directed to the site to complete checkout
+- Ask questions and get relevant answers without browsing the site

@@ -1,7 +1,27 @@
 aid: spotlock
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/spotlock.png
 name: Spotlock
-description: Spotlock is a company surfaced as a portfolio company of seedcamp and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Spotlock is a commodity risk management platform that helps organizations
+  monitor, manage, and mitigate exposure to raw-material price volatility. It
+  lets businesses track material exposures across inventory, customer contracts,
+  and supplier commitments, set company-wide risk policies, and execute
+  optimized hedging strategies — enabling fixed-price long-term contracts, profit
+  margin protection, hedge accounting treatment, framework/agreement pricing, and
+  global price intelligence for sectors such as construction and infrastructure,
+  metal service centers and distribution, manufacturing and fabrication,
+  automotive, energy, and transportation.
 url: https://raw.githubusercontent.com/api-evangelist/spotlock/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,9 +31,18 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
+- Commodity Risk Management
+- Hedging
+- Risk Management
+- Commodities
+- Procurement
+- Price Intelligence
+- Fintech
+- Construction
+- Manufacturing
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -22,4 +51,26 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://spotlock.co
+  url: https://www.spotlock.co
+- type: About
+  url: https://www.spotlock.co/about-us
+- type: Support
+  url: https://www.spotlock.co/contact-us
+- type: PrivacyPolicy
+  url: https://www.spotlock.co/privacy
+- type: TermsOfService
+  url: https://www.spotlock.co/terms
+- type: LinkedIn
+  url: https://www.linkedin.com/company/87383140
+- type: MCPServer
+  name: Spotlock Wix Site MCP
+  url: mcp/spotlock-mcp.yml
+- type: LLMsTxt
+  url: llms/spotlock-llms.txt
+- type: DomainSecurity
+  url: security/spotlock-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 3
+  pass: local-v1
