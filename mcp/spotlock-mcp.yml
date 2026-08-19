@@ -2,13 +2,11 @@ generated: '2026-07-21'
 method: searched
 status: published
 source: https://www.spotlock.co/llms.txt
-notes: >-
-  Site is built on Wix, which exposes a hosted Model Context Protocol (MCP)
-  endpoint for agentic access to public site content. This is the Wix Site MCP
-  (generic across Wix sites), not a bespoke Spotlock product API. The endpoint is
-  live: an unauthenticated JSON-RPC tools/list POST returns the tool set below;
-  a GET returns HTTP 401. No authentication is required to connect; only public
-  site information is exposed.
+notes: 'Site is built on Wix, which exposes a hosted Model Context Protocol (MCP) endpoint for agentic
+  access to public site content. This is the Wix Site MCP (generic across Wix sites), not a bespoke Spotlock
+  product API. The endpoint is live: an unauthenticated JSON-RPC tools/list POST returns the tool set
+  below; a GET returns HTTP 401. No authentication is required to connect; only public site information
+  is exposed.'
 server:
   name: spotlock
   provider: Wix Site MCP
@@ -25,20 +23,17 @@ tools:
   - name: searchTerm
     description: The term to search for in the site.
 - name: SearchSiteApiDocs
-  description: >-
-    Retrieves the API documentation for the Wix business solutions installed on
-    this site, and informs the AI client how to use the APIs.
+  description: Retrieves the API documentation for the Wix business solutions installed on this site,
+    and informs the AI client how to use the APIs.
   parameters:
   - name: searchTerm
     description: The term to search for in the site API documentation.
 - name: GenerateVisitorToken
-  description: >-
-    Creates a new visitor session and obtains a visitor access token for the site.
-    Must be called before making any CallWixSiteAPI request.
+  description: Creates a new visitor session and obtains a visitor access token for the site. Must be
+    called before making any CallWixSiteAPI request.
 - name: CallWixSiteAPI
-  description: >-
-    Calls API methods on the site to perform actions on a visitor's behalf, such
-    as querying site data, booking an appointment, or starting a purchase.
+  description: Calls API methods on the site to perform actions on a visitor's behalf, such as querying
+    site data, booking an appointment, or starting a purchase.
   parameters:
   - name: visitorToken
     description: Visitor access token. Use GenerateVisitorToken first if not available.
@@ -64,3 +59,11 @@ capabilities:
 - Book services and make reservations
 - Start a purchase and be directed to the site to complete checkout
 - Ask questions and get relevant answers without browsing the site
+deployment:
+  mode: remote
+  endpoint: https://www.spotlock.co/_api/mcp
+  verified: probed
+  probe: live
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
